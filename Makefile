@@ -23,7 +23,6 @@ echo BUILD_ENV:
   	printf '$(PYTHON_VERSION) is empty.\n'
    	exit 1
   fi
-  PYENV_VIRTUALENV_DISABLE_PROMPT=1
   pyenv install -s "$(PYTHON_VERSION)" || printf 'Python $(PYTHON_VERSION) is already installed.\n'
   pyenv virtualenv "$(PYTHON_VERSION)" "$(BUILD_NAME)_$(PYTHON_VERSION)" || printf '$(BUILD_NAME)_$(PYTHON_VERSION) is already initialized.\n'
   eval "$$(pyenv init -)"
@@ -71,3 +70,7 @@ test:
 	$(PACK)
 	$(REINST)
 	python -m unittest discover
+
+
+
+
