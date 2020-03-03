@@ -1,18 +1,28 @@
-Init ENV:
+### Get pyenv
+
+clone it to the home dir:
 ```
-source ./shell.bash
-```
-Configure ENV Python on MacOS or Linux:
-```
-export PYTHON_VERSION=3.7.4
-export PYTHON_NAME=ENV
-```
-Use `require` to request the required env variables:
-```
-require BUILD_VERSION
-```
-Activate ENV:
-```
-ENV
+git clone https://github.com/vldmrweider/pyenv $HOME/.pyenv
+git clone https://github.com/vldmrweider/pyenv-virtualenv "$HOME/.pyenv/plugins/pyenv-virtualenv"
 ```
 
+add pyenv to the local path:
+```
+printf 'export PATH="%s/.pyenv/bin:%s"' "$HOME" "$PATH" >> "$HOME/.bashrc"
+```
+
+reload local bashrc:
+```
+source "$HOME/.bashrc"
+```
+
+### Make
+
+Build:
+```
+make build
+```
+Test:
+```
+make test
+```
