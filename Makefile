@@ -40,16 +40,16 @@ echo BUILD_ENV:
 echo :BUILD_ENV
 endef
 
-define REPACK
-  pip install py3clean \
-  && py3clean ./
-  rm -r ./build/* \
-  && rm -r ./dist/*
-  pip install setuptools wheel \
-  && export WHEEL_NAME=$(BUILD_NAME) \
-  && export WHEEL_VERSION=$$(date '+%Y.%m%d.%H%M%S') \
-  && export WHEEL_DEPENDENCIES="$$(cat $(REQUIREMENTS_PATH))" \
-  && python setup.py bdist_wheel --dist-dir ./dist/
+define PACK
+	rm -r ./build/* \
+	&& rm -r ./dist/*
+	pip install setuptools wheel \
+	&& export WHEEL_NAME=$(BUILD_NAME) \
+	&& export WHEEL_VERSION=$$(date '+%Y.%m%d.%H%M%S') \
+	&& export WHEEL_DEPENDENCIES="$$(cat $(REQUIREMENTS_PATH))" \
+	&& python setup.py bdist_wheel --dist-dir ./dist/
+
+
 endef
 
 define REINST
@@ -68,6 +68,6 @@ build:
 
 test:
 	$(DEFAULT)
-	$(REPACK)
+	$(PACK)
 	$(REINST)
-	python . test $(BUILD_NAME)
+	python -m unittest discover
