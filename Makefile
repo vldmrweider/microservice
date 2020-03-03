@@ -65,6 +65,11 @@ build:
 	&& pylint --rcfile ./pylintrc $(BUILD_NAME) \
 	&& python . collectstatic
 
+install:
+	$(DEFAULT)
+	$(PACK)
+	$(REINST)
+
 test:
 	$(DEFAULT)
 	$(PACK)

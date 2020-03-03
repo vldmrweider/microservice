@@ -9,3 +9,5 @@ RUN pip3.7 install -r requirements.txt
 RUN pip3.7 install microservice-*.whl
 
 EXPOSE 8080
+
+CMD ["microservice"]

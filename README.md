@@ -22,6 +22,10 @@ Build:
 ```
 make build
 ```
+Install:
+```
+make install
+```
 Test:
 ```
 make test

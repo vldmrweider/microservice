@@ -18,4 +18,4 @@ setup(name=NAME,
       # `package_data={'': ['']},`
       include_package_data=True,
       install_requires=requirements(),
-      entry_points={'console_scripts': ['%s = %s.app:__call__' % (NAME, NAME)]})
+      entry_points={'console_scripts': ['%s = %s.main:main' % (NAME, NAME)]})
