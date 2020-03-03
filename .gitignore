@@ -1,0 +1,14 @@
+venv
+.idea/
+.vscode/
+.history/
+*.iml
+idea
+build
+dist
+*.build
+*.dist
+*.exe
+__pycache__
+.mypy_cache
+*.egg-info
