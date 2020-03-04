@@ -32,6 +32,6 @@ make test
 ```
 Docker:
 ```
-sudo docker build -t microservice-demo:0.0.1 .
-sudo docker tag microservice-demo:0.0.1 microservice-demo:latest
+make docker-build
+make docker-run
 ```
