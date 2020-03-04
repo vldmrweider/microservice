@@ -3,8 +3,13 @@
 .ONESHELL:
 SHELL=/bin/bash
 
+
 define BUILD_NAME
 microservice
+endef
+
+define PACKAGE_VERSION
+$(shell cat VERSION)
 endef
 
 define PYTHON_VERSION
@@ -44,10 +49,9 @@ define PACK
 	&& rm -r ./dist/*
 	pip install setuptools wheel \
 	&& export WHEEL_NAME=$(BUILD_NAME) \
-	&& export WHEEL_VERSION=$$(date '+%Y.%m%d.%H%M%S') \
+	&& export WHEEL_VERSION=$(PACKAGE_VERSION) \
 	&& export WHEEL_DEPENDENCIES="$$(cat $(REQUIREMENTS_PATH))" \
 	&& python setup.py bdist_wheel --dist-dir ./dist/
-
 
 endef
 
@@ -75,6 +79,20 @@ test:
 	$(PACK)
 	$(REINST)
 	python -m unittest discover
+
+docker-build:
+	# sudo if you need
+	docker build -t microservice-demo:$(PACKAGE_VERSION) .
+	docker tag microservice-demo:$(PACKAGE_VERSION) microservice-demo:latest
+
+docker-run:
+	# sudo if you need
+	docker run -p 8080:8080 microservice-demo
+
+
+
+
+
 
 
 

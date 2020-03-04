@@ -35,7 +35,7 @@ def cancel_tasks() -> None:
         task.cancel()
 
 
-async def hello() -> web.Response:
+async def hello(request: web.Request) -> web.Response:
     timestamp = datetime.now().isoformat()
     return web.Response(text=f"{HOSTNAME} received at {timestamp}")
 
