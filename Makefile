@@ -82,14 +82,17 @@ test:
 
 docker-build:
 	# sudo if you need
-	docker build -t microservice-demo:$(PACKAGE_VERSION) .
+	docker build -t vldmrweider/microservice-demo:$(PACKAGE_VERSION) .
 	docker tag microservice-demo:$(PACKAGE_VERSION) microservice-demo:latest
 
 docker-run:
 	# sudo if you need
 	docker run -p 8080:8080 microservice-demo
 
-
+docker-push:
+	# sudo if you need
+	docker tag microservice-demo vldmrweider/microservice-demo
+	docker push vldmrweider/microservice-demo
 
 
 
